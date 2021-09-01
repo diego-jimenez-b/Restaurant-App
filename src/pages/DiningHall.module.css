@@ -1,0 +1,44 @@
+.card {
+  background-color: rgb(158, 21, 158);
+  color: white;
+  padding: 0;
+  margin-bottom: 30px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+.card:hover {
+  background-color: rgb(134, 19, 134);
+}
+.card h2 {
+  margin: 0;
+  font-size: 18px;
+  padding: 17px 0;
+}
+.card a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  top: 50vh;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 920px) {
+  .container div ol {
+    max-height: 60vh;
+  }
+  .container {
+    transform: translateY(-48%);
+  }
+}
+@media screen and (max-width: 400px) {
+ .card h2 {
+   font-size: 16px;
+ }
+}

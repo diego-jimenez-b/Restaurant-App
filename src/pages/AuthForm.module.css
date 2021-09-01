@@ -1,0 +1,92 @@
+.form {
+  background-color: white;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 520px;
+  margin: 120px auto;
+  padding: 17px 34px;
+}
+
+.form h1 {
+  margin: 10px 0 20px;
+  text-align: center;
+}
+.form span {
+  display: block;
+}
+.form label {
+  font-weight: bold;
+}
+.form input {
+  width: 100%;
+  margin: 5px 0 20px;
+  padding: 3.5px;
+}
+
+.form button {
+  background-color: rgb(131, 8, 131);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 15px auto 10px;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+}
+.form button:hover {
+  background-color: rgb(112, 6, 112);
+  cursor: pointer;
+}
+
+.form span {
+  text-align: center;
+}
+.form span:hover {
+  cursor: pointer;
+  color: rgb(126, 7, 126);
+}
+
+.radio-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+  gap: 0 9px;
+}
+.radio-inputs label {
+  font-size: 14px;
+}
+.radio-inputs input {
+  margin: 0 0 0 5px;
+  width: auto;
+  position: relative;
+  top: 2.5px;
+}
+
+span.message {
+  text-align: start;
+  margin: -13px 3px 10px;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    padding: 17px 20px;
+  }
+  .form h1 {
+    font-size: 27px;
+  }
+  .form button {
+    font-size: 14px;
+  }
+  .form form > span {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .form form > label {
+    font-size: 15px;
+  }
+}

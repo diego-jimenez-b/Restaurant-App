@@ -1,0 +1,55 @@
+div.card {
+  margin-top: 20px;
+  padding: 15px 10px;
+}
+.card p {
+  text-align: center;
+}
+.card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.total {
+  text-align: end;
+}
+.total h3 {
+  margin: 20px 0 5px;
+}
+.total button {
+  background-color: rgb(141, 10, 141);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 25px;
+}
+.total button:hover,
+.total button:active {
+  background-color: rgb(114, 7, 114);
+  cursor: pointer;
+}
+
+button.disabled,
+button.disabled:hover {
+  background-color: gainsboro;
+  color: grey;
+  cursor: progress;
+}
+.total span {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 780px) {
+  main div.card {
+    width: 53%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main div.card {
+    width: 85%;
+    max-width: 430px;
+    margin-bottom: 40px;
+  }
+}

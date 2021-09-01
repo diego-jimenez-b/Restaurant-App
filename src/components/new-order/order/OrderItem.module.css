@@ -1,0 +1,20 @@
+.item {
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+  position: relative;
+}
+.item h3 {
+  margin: 5px;
+  font-size: 17px;
+}
+.item span {
+  display: inline-block;
+  margin: 5px;
+}
+.item button {
+  margin: 0 1px;
+}
+.item span:nth-of-type(3){
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,48 @@
+.order {
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 15px 0;
+  position: relative;
+}
+
+.order > span {
+  font-size: 15.5px;
+}
+
+.order button {
+  background-color: rgb(131, 8, 131);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.order button:hover {
+  background-color: rgb(112, 6, 112);
+  cursor: pointer;
+}
+
+.items {
+  padding: 5px 15px;
+  margin: 0;
+}
+.items li {
+  margin: 3px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 560px) {
+  .items {
+    padding-bottom: 40px;
+  }
+  .order button {
+    top: auto;
+    bottom: 10px;
+    transform: translateY(0);
+    font-size: 12px;
+  }
+}
