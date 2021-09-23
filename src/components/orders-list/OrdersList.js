@@ -31,6 +31,7 @@ const KitchenList = ({ collectionName }) => {
       },
       (error) => {
         alert(error.message);
+        history.replace('/auth')
       }
     );
 
