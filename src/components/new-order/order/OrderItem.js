@@ -1,21 +1,21 @@
-import { useContext } from 'react';
-import OrderContext from '../../../store/order-context';
+import { useDispatch } from 'react-redux';
+import { orderActions } from '../../../store/order-slice';
 import classes from './OrderItem.module.css';
 
 const Order = (props) => {
-  const orderCtx = useContext(OrderContext);
+  const dispatch = useDispatch();
 
   const { item, price, quantity, id } = props.itemInfo;
   const total = price * quantity;
 
   const addToOrderHandler = () => {
-    orderCtx.addItem(props.itemInfo);
+    dispatch(orderActions.addItem({ ...props.itemInfo, quantity: 1 }));
   };
   const removeFromOrderHandler = () => {
-    orderCtx.removeItem(id);
+    dispatch(orderActions.removeItem(id));
   };
   const deleteItemHandler = () => {
-    orderCtx.deleteItem(id);
+    dispatch(orderActions.deleItem(id));
   };
 
   return (

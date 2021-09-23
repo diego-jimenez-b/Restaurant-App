@@ -1,11 +1,12 @@
-import { useContext } from 'react';
-import OrderContext from '../../../store/order-context';
+import { useDispatch } from 'react-redux';
+
+import { orderActions } from '../../../store/order-slice';
 
 const MenuItem = ({ item }) => {
-  const orderCtx = useContext(OrderContext);
+  const dispatch = useDispatch();
 
   const addToCarthandler = () => {
-    orderCtx.addItem(item);
+    dispatch(orderActions.addItem({ ...item, quantity: 1 }));
   };
 
   return (

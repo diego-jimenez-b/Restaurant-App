@@ -30,7 +30,7 @@ const KitchenList = ({ collectionName }) => {
         setOrders(ordersList);
       },
       (error) => {
-        console.log(error.message);
+        alert(error.message);
       }
     );
 

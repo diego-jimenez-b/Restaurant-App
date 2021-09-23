@@ -1,18 +1,18 @@
-import { useContext, useRef, useState } from 'react';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { useRef, useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/auth-slice';
 import classes from './AuthForm.module.css';
-import AuthContext from '../store/auth-context';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [selectedArea, setSelectedArea] = useState('');
-
-  const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -26,8 +26,7 @@ const AuthForm = () => {
 
     if (!isLogin) {
       createUserWithEmailAndPassword(auth, enteredEmail, enteredPassword)
-        .then((userCredential) => {
-          console.log(userCredential.user);
+        .then(() => {
           setIsLogin(true);
           alert(
             'You have successfully registered, please select an area to login'
@@ -41,9 +40,8 @@ const AuthForm = () => {
       }
 
       signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
-        .then((userCredential) => {
-          console.log(userCredential.user);
-          authCtx.login(selectedArea);
+        .then(() => {
+          dispatch(authActions.login(selectedArea));
         })
         .catch((err) => alert(err.code));
     }

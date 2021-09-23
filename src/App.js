@@ -1,46 +1,31 @@
-import AuthForm from './pages/AuthForm';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import { Fragment, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+import AuthForm from './pages/AuthForm';
 import DiningHall from './pages/DiningHall';
 import Kitchen from './pages/Kitchen';
-import { Fragment, useContext, useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import AuthContext from './store/auth-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from './store/auth-slice';
 
 function App() {
-  const authCtx = useContext(AuthContext);
-  const { isLoggedIn, area, login } = authCtx;
+  const { isLoggedIn, area } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const auth = getAuth();
 
-  // const checkUser = () => {
-  //   const user = auth.currentUser;
-
-  //   if (user) {
-  //     console.log(user);
-  //   } else {
-  //     console.log(user, 'not logged in');
-  //   }
-  // };
-
-  console.log('working');
-
   useEffect(() => {
-    console.log('effect working');
-
     const area = localStorage.getItem('area');
+
     onAuthStateChanged(auth, (user) => {
-      if (user && area) login(area);
+      if (user && area) dispatch(authActions.login(area));
     });
-  }, [login, auth]);
+  }, [dispatch, auth]);
 
   const logoutHandler = () => {
-    authCtx.logout();
+    dispatch(authActions.logout());
     auth.signOut();
   };
-
-  // const checkContext = () => {
-  //   console.log(authCtx);
-  // };
 
   const kitchenIsAvailable =
     (isLoggedIn && area === 'kitchen') || area === 'observer';
@@ -49,9 +34,6 @@ function App() {
 
   return (
     <Fragment>
-      {/* <Link to='/auth'>Log in</Link> */}
-      {/* <button onClick={checkUser}>check user is logged in</button>
-        <button onClick={checkContext}>check context</button> */}
       {area === 'observer' && (
         <nav className='nav'>
           <Link to='/dining-hall' className='btn'>
@@ -84,14 +66,12 @@ function App() {
         {diningIsAvailable && (
           <Route path='/dining-hall'>
             <DiningHall />
-            {/* <p>Dining hall</p> */}
           </Route>
         )}
 
         {kitchenIsAvailable && (
           <Route path='/kitchen'>
             <Kitchen />
-            {/* <p>Kitchen</p> */}
           </Route>
         )}
 
